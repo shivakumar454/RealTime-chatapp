@@ -1,5 +1,5 @@
 import React, { useEffect,useRef } from "react";
-import { useChatStore } from "../store/useChatStore.js";
+import useChatStore  from "../store/useChatStore.js";
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
 import MessageSkeleton from "./skeletons/MessageSkeleton";
