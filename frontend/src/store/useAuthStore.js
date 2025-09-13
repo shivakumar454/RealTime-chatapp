@@ -103,11 +103,14 @@ export const useAuthStore = create((set,get) => ({
     const {authUser}=get();
     if(!authUser || get().socket?.connected) return ;
 
-    const socket=io(BASE_URL,{
-      query:{
-        userId:authUser._id,
-      }
-    });
+    const socket = io(BASE_URL, {
+  withCredentials: true,
+  extraHeaders: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
+  query: { userId: authUser._id },
+});
+
     socket.connect()
 
     set({socket:socket});
