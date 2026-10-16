@@ -6,6 +6,7 @@ import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import cors from "cors" ;
 import { app, server } from "./lib/socket.js";
+import aiRoutes from "./routes/ai.route.js";
 
 import path from "path";
 
@@ -17,6 +18,7 @@ const PORT =process.env.PORT;
 const __dirname=path.resolve();
 
 app.use(cookieParser());
+
 
 app.use(cors({
   origin: [
@@ -32,6 +34,7 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 app.use("/api/auth", authRoutes)
 app.use("/api/messages",messageRoutes);
+app.use("/api/ai",aiRoutes);
 
 
 if(process.env.NODE_ENV==="production"){
@@ -42,6 +45,7 @@ if(process.env.NODE_ENV==="production"){
         res.sendFile((path.join(__dirname,"../frontend" ,"dist","index.html")));
     })
 }
+
 
 server.listen(PORT,()=>{
     console.log("server is running  on port:" + PORT);

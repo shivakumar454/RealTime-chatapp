@@ -48,7 +48,26 @@ const useChatStore =create((set,get)=>({
             toast.error(error.response.data.message);
         }
     },
+    askConversation: async (question) => {
+  const { selectedUser } = get();
 
+  try {
+    const res = await axiosInstance.post(
+      `/ai/ask-conversation/${selectedUser._id}`,
+      {
+        question,
+      }
+    );
+
+    return res.data;
+  } catch (error) {
+    toast.error(
+      error.response?.data?.message || "Failed to ask AI"
+    );
+
+    throw error;
+  }
+},
     SubsribeToMessages:()=>{
         const{selectedUser}=get();
         if(!selectedUser) return;
