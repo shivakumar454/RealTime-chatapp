@@ -2,14 +2,12 @@ import { GoogleGenAI } from "@google/genai";
 import "dotenv/config";
 
 const ai = new GoogleGenAI({
-    apiKey: process.env.GEMINI_API_KEY,
+  apiKey: process.env.GEMINI_API_KEY,
 });
 
 const response = await ai.models.generateContent({
-    model: "gemini-3.8-flash",
-    // model: "gemini-3.8-flash-lite",
-    //  model: "gemini-2.5-flash-lite",
-    contents: prompt,
+  model: "gemini-3.5-flash",
+  contents: "Explain RAG in one simple sentence.",
 });
 
 console.log(response.text);

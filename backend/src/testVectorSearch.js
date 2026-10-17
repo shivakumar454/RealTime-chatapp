@@ -12,7 +12,6 @@ console.log("MongoDB connected");
 
 const question = "What am I testing?";
 
-// 1. Convert question into embedding
 const embeddingResponse = await ai.models.embedContent({
     model: "gemini-embedding-2",
     contents: question,
@@ -20,7 +19,6 @@ const embeddingResponse = await ai.models.embedContent({
 
 const queryVector = embeddingResponse.embeddings[0].values;
 
-// 2. Vector search
 const results = await mongoose.connection.db
     .collection("messages")
     .aggregate([

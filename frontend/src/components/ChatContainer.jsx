@@ -91,7 +91,6 @@ const ChatContainer = () => {
 
       <ChatHeader onAskAI={() => setShowAi(true)} />
 
-      {/* Ask AI Panel */}
       {showAi && (
         <div className="p-4 border-b border-base-300">
 
@@ -108,7 +107,6 @@ const ChatContainer = () => {
             </button>
           </div>
 
-          {/* Question input */}
           <div className="flex gap-2 mt-3">
             <input
               type="text"
@@ -148,8 +146,8 @@ const ChatContainer = () => {
   <div className="mt-4 p-3 rounded-lg bg-base-200">
     <p className="font-semibold mb-2">
   {aiFoundContext
-    ? "🤖 AI Answer"
-    : "🔎 Couldn't find an answer"}
+    ? "AI Answer"
+    : "Couldn't find an answer"}
 </p>
 
     <p className="text-sm">
@@ -159,7 +157,7 @@ const ChatContainer = () => {
     {aiSources.length > 0 && (
       <div className="mt-4">
         <p className="font-semibold mb-2">
-          📚 Sources
+          Sources
         </p>
 
         <div className="space-y-2">
